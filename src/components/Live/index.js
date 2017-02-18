@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import Webcam from 'react-webcam';
-
 import { Button } from 'react-bootstrap';
+
+import RenderNavHeader from '../../shared/header'
 
 import './style.css';
 
@@ -28,8 +29,9 @@ export default class Live extends Component {
 
     return (
       <div className={classnames('App', className)} {...props}>
-        <div className="App-header">
-          <h2>Live</h2>
+        <RenderNavHeader />
+        <div className="App">
+          <h2>LIVE</h2>
         </div>
         <p className="App-intro">
           <Webcam className="webcam" ref='webcam' />

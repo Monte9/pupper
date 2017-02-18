@@ -15,3 +15,4 @@ Built with love at TreeHacks 2017
 
 1. [React Bootstrap](https://react-bootstrap.github.io/components.html)
 2. [Getting started Medium post](https://medium.com/@patriciolpezjuri/using-create-react-app-with-react-router-express-js-8fa658bf892d#.ttdaxnbky)
+3. [Font Awesome Icons](https://github.com/danawoodman/react-fontawesome)

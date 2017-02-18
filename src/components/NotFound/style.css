@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  background-color: #d3d3d3;
+  height: 700px;
+}
+
+.Not-found-title {
+  padding-top: 300px;
+  font-size: 50px;
+}
+
+.Go-home-link {
+  background-color: transparent;
+  border-width: 0px;  
+}
