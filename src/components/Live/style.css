@@ -3,7 +3,9 @@
 }
 
 .App-intro {
-  padding-top: 20px;
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
 }
 
 .App-button {

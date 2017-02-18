@@ -19,6 +19,10 @@ export default class Live extends Component {
     this.setState({screenshot: screenshot});
   }
 
+  componentDidMount(){
+      setInterval(this.captureFrame.bind(this), 1000);
+  }
+
   render() {
     const { className, ...props } = this.props;
 
@@ -28,17 +32,12 @@ export default class Live extends Component {
     return (
       <div className={classnames('App', className)} {...props}>
         <div className="Live-container">
-          <h2>LIVE</h2>
         </div>
         <p className="App-intro">
           <Webcam className="webcam" ref='webcam' />
         </p>
-        <p className="App-button">
-          <Button bsStyle="primary" bsSize="large" onClick={this.captureFrame.bind(this)}>Capture</Button>
-        </p>
         { this.state.screenshot && (
           <p className="App-Screenshot">
-            <h3 className="App-Screenshot-Title">Screenshot</h3>
             <img src={this.state.screenshot} role="presentation"/>
           </p>
         )}
