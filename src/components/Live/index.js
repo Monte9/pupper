@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
@@ -19,6 +21,12 @@ export default class Live extends Component {
   captureFrame() {
     var screenshot = this.refs.webcam.getScreenshot();
     this.setState({screenshot: screenshot});
+
+    $.post('/process_image', {image: screenshot})
+      .then((data) => {
+        console.log("POST Req success")
+        console.log(data)
+      });
   }
 
   render() {
