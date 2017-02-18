@@ -19,9 +19,9 @@ class App extends Component {
   }
 
   getPupperImages() {
-    return $.getJSON('https://www.googleapis.com/customsearch/v1?q=puppy&num=10&imgSize=medium&searchType=image&key=AIzaSyCS4QZroUUPxWbvcZOhfnkzGyXFXJnZ26I&cx=006110433430620454490%3A1jkort_cgf4')
+    return $.getJSON('https://api.instagram.com/v1/users/self/media/recent/?access_token=4666482734.0fc13c6.3850da1a14074073bef374f9cbfcd3c7&callback=?')
       .then((data) => {
-        this.setState({ puppers: data.items });
+        this.setState({ puppers: data.data });
       });
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
       return (
         this.state.puppers.map((puppy, index) => {
           return (
-            <PupperCard key={puppy.htmlTitle} title={puppy.title} source={puppy.link}/>
+            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url}/>
           )
         })
       )
