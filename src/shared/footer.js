@@ -11,10 +11,7 @@ export default class IntroToPupper extends Component {
     return (
       <div className="Footer-container">
         <div className="Footer-text-container">
-          <p className="Text-container-text">Built with <FontAwesome
-            name='heart'
-            size='2x'
-            style={{ color: 'red' }} /> at TreeHacks 2017</p>
+          <p className="Text-container-text">Built with &#x2764; at TreeHacks 2017</p>
         </div>
       </div>
     )

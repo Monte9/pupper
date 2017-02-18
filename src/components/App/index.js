@@ -7,6 +7,7 @@ import RenderNavHeader from '../../shared/header'
 import IntroToPupper from '../../shared/intro_to_pupper'
 import PupperCard from '../../shared/pupper_card'
 import Footer from '../../shared/footer'
+import Live from '../Live/index'
 
 import './style.css';
 
@@ -43,6 +44,7 @@ class App extends Component {
       <div className={classnames('About', className)} {...props}>
         <RenderNavHeader />
         {this.renderPuppers()}
+        <Live />
         <Footer />
       </div>
     );
