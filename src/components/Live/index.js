@@ -30,7 +30,7 @@ export default class Live extends Component {
     return (
       <div className={classnames('App', className)} {...props}>
         <RenderNavHeader />
-        <div className="App">
+        <div className="Live-container">
           <h2>LIVE</h2>
         </div>
         <p className="App-intro">

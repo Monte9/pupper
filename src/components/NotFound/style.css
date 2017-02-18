@@ -1,4 +1,4 @@
-.App {
+.Notfound-app {
   text-align: center;
   background-color: #d3d3d3;
   height: 700px;
@@ -11,5 +11,5 @@
 
 .Go-home-link {
   background-color: transparent;
-  border-width: 0px;  
+  border-width: 0px;
 }

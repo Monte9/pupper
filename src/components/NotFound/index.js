@@ -20,7 +20,7 @@ export default class NotFound extends Component {
     return (
       <div className={classnames('NotFound', className)} {...props}>
         <RenderNavHeader />
-        <div className="App">
+        <div className="Notfound-app">
           <h2 className="Not-found-title">404, Not Found</h2>
           <button className="Go-home-link" onPress={this.goHomeButton.bind(this)}>
             <p>
