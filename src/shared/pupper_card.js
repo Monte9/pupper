@@ -9,10 +9,10 @@ export default class PupperCard extends Component {
       <div className="Pupper-card-wrapper">
         <div className="Pupper-card">
           <div className="Pupper-card-header">
-            <h2 className="Pupper-card-header-title">Sample Pupper</h2>
+            <h2 className="Pupper-card-header-title">{this.props.title}</h2>
           </div>
           <div className="Pupper-card-image">
-            <img src="http://www.zdwired.com/wp-content/uploads/2014/04/cute-dogs-wallpaper.jpg" className="Pupper-card-image-source" alt="logo" role="presentation"/>
+            <img src={this.props.source} className="Pupper-card-image-source" alt="logo" role="presentation"/>
           </div>
         </div>
       </div>

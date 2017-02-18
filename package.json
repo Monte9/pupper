@@ -16,6 +16,7 @@
     "babel-loader": "^6.3.2",
     "classnames": "^2.2.5",
     "express": "^4.14.1",
+    "jquery": "^3.1.1",
     "morgan": "^1.8.1",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
