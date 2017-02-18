@@ -17,7 +17,6 @@ class App extends Component {
     return (
       <div className={classnames('About', className)} {...props}>
         <RenderNavHeader />
-        <IntroToPupper />
         <PupperCard />
         <PupperCard />
         <PupperCard />

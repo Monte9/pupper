@@ -1,3 +1,4 @@
+
 .Container {
   margin: auto;
   width: 605px;
@@ -19,6 +20,7 @@
 }
 
 .Text-container-text {
-  font-size: 13px;
+  font-size: 30px;
   text-align: center;
+  font-family: edmondsans-regular !important;
 }
