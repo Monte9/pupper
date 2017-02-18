@@ -16,7 +16,9 @@ class App extends Component {
   // state = {}
 
   componentDidMount() {
+    console.log("hi there");
     this.getPupperImages();
+    this.getMatchingAdoptablePuppers();
   }
 
   getPupperImages() {
@@ -24,6 +26,23 @@ class App extends Component {
       .then((data) => {
         this.setState({ puppers: data.data });
       });
+  }
+
+  getMatchingAdoptablePuppers() {
+    var url = 'http://api.petfinder.com/pet.getRandom?key=7df0fb48f5f60ad6bd360c74f25b0f17&location=94020&breed=pug&output=full&format=json';
+    $.ajax({
+        type : 'GET',
+        data : {},
+        url : url+'&callback=?' ,
+        dataType: 'json',
+        success : function(data) {
+            console.log(data.petfinder.pet.name);
+        },
+        error : function(request,error)
+        {
+            alert("Request: "+ JSON.stringify(request));
+        }
+    });
   }
 
   renderPuppers() {
