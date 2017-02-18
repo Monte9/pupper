@@ -9,7 +9,7 @@ export default class PupperCard extends Component {
       <div className="Pupper-card-wrapper">
         <div className="Pupper-card">
           <div className="Pupper-card-image">
-            <img src="http://www.zdwired.com/wp-content/uploads/2014/04/cute-dogs-wallpaper.jpg"/>
+            <img src={this.props.source} className="Pupper-card-image-source" alt="logo" role="presentation"/>
           </div>
           <div className="Pupper-card-overlay">
             <p> Adopt me! </p>
