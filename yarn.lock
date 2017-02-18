@@ -4332,6 +4332,10 @@ react-scripts:
   optionalDependencies:
     fsevents "1.0.17"
 
+react-webcam:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/react-webcam/-/react-webcam-0.0.14.tgz#9bb964439be654d4a9d2d7722d7bf5a9cccca877"
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
