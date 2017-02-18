@@ -1,0 +1,24 @@
+.Container {
+  margin: auto;
+  width: 605px;
+}
+
+.Intro-logo-container {
+  margin: auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.Intro-app-logo {
+  width: 130px;
+  height: 35px;
+}
+
+.Text-container {
+  padding-top: 10px;
+}
+
+.Text-container-text {
+  font-size: 13px;
+  text-align: center;
+}

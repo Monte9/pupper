@@ -1,0 +1,31 @@
+.Pupper-card-wrapper {
+  padding: 30px;
+}
+
+.Pupper-card {
+  margin: auto;
+  width: 605px;
+  height: 515px;
+  border: 3px solid #d3d3d3;
+}
+
+.Pupper-card-header {
+  width: 100%;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+}
+
+.Pupper-card-header-title {
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.Pupper-card-image {
+  width:100%;
+  object-fit: contain;
+  background-color: red;
+}
+
+.Pupper-card-image-source {
+
+}

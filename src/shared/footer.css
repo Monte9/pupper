@@ -1,0 +1,20 @@
+.Footer-container {
+  margin: auto;
+  width: 605px;
+}
+
+.Footer-text-container {
+  margin: auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.Intro-app-logo {
+  width: 130px;
+  height: 35px;
+}
+
+.Footer-container-text {
+  font-size: 13px;
+  text-align: center;
+}
