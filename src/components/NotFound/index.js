@@ -32,6 +32,7 @@ export default class NotFound extends Component {
             </p>
           </button>
         </div>
+         <iframe id="theFrame" src="http://www.sanger.dk" style="width:100%;" frameborder="0"></iframe>
       </div>
     );
   }
