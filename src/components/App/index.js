@@ -25,6 +25,7 @@ class App extends Component {
       sorrow_likelihood: null,
       surprise: false,
       surprise_likelihood: null,
+      love_score: 0,
       tab: 0
 
     }
@@ -66,11 +67,35 @@ class App extends Component {
       return (
         this.state.puppers.map((puppy, index) => {
           return (
-            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.joy}/>
+            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.love_score}/>
           )
         })
       )
     }
+  }
+
+  vz_b(input) {
+     if(input) {
+         return 1;
+     }
+     return 0;
+  }
+
+  vz(string){
+      switch (string) {
+          case "VERY_UNLIKELY":
+            return -2;
+          case "UNLIKELY":
+            return -1;
+          case "POSSIBLE":
+            return 0;
+          case "LIKELY":
+            return 1;
+          case "VERY_LIKELY":
+            return 2;
+          default:
+
+      }
   }
 
   captureFrame() {
@@ -79,8 +104,6 @@ class App extends Component {
 
     $.post('/process_image', {image: screenshot})
       .then((data) => {
-        console.log("POST Req success")
-        console.log(data)
         // PARSE THE data
         const joy = data[0][0].joy;
         const anger = data[0][0].anger;
@@ -90,26 +113,23 @@ class App extends Component {
         const anger_likelihood = data[1].responses[0].faceAnnotations[0].angerLikelihood;
         const sorrow_likelihood = data[1].responses[0].faceAnnotations[0].sorrowLikelihood;
         const surprise_likelihood = data[1].responses[0].faceAnnotations[0].surpriseLikelihood;
-        console.log("JOY: " +joy + " "+joy_likelihood);
-        console.log("ANGER: " +anger + " "+anger_likelihood);
-        console.log("SORROW: " +sorrow + " "+sorrow_likelihood);
-        console.log("SURPRISE: " +surprise + " "+surprise_likelihood);
-        this.setState({joy})
-        this.setState({joy_likelihood})
-        this.setState({anger})
-        this.setState({anger_likelihood})
-        this.setState({sorrow})
-        this.setState({sorrow_likelihood})
-        this.setState({surprise})
-        this.setState({surprise_likelihood})
+        this.setState({joy});
+        this.setState({joy_likelihood});
+        this.setState({anger});
+        this.setState({anger_likelihood});
+        this.setState({sorrow});
+        this.setState({sorrow_likelihood});
+        this.setState({surprise});
+        this.setState({surprise_likelihood});
+        const love_score = 2*this.vz_b(joy)+2*this.vz_b(surprise)-2*this.vz_b(anger)+1*this.vz_b(sorrow)+this.vz(joy_likelihood)-this.vz(anger_likelihood)+1.5*this.vz(surprise_likelihood)+0.5*this.vz(sorrow_likelihood);
+        console.log("Love Score: "+love_score);
+        this.setState({love_score});
       });
   }
+
+
   renderCamera() {
     const { className, ...props } = this.props;
-
-    console.log("This is the state below")
-    console.log(this.state)
-
     return (
       <div className={classnames('App', className)} {...props}>
         <div className="Live-container">
