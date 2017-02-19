@@ -1,0 +1,14 @@
+.App-container {
+  text-align: center;
+}
+
+.App-intro {
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}
+
+.App-screenshot {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}

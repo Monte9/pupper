@@ -2,21 +2,13 @@
   text-align: center;
 }
 
-.App-intro {
+.Live-app-intro {
   width: 0px;
   height: 0px;
   visibility: hidden;
 }
 
-.App-button {
-  padding: 5px;
-}
-
-.App-Screenshot {
+.Live-app-screenshot {
   padding-top: 20px;
   padding-bottom: 10px;
-}
-
-.App-Screenshot-Title {
-  font-weight: bold;
 }

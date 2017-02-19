@@ -31,50 +31,23 @@ class App extends Component {
     }
 
   componentDidMount() {
-    console.log("hi there");
     this.getPupperImages();
     //this.getMatchingAdoptablePuppers();
+
+    setTimeout(this.startCapturingImage.bind(this), 3000);
+  }
+
+  startCapturingImage() {
     setInterval(this.captureFrame.bind(this), 500);
   }
 
   getPupperImages() {
+    var url = 'http://api.petfinder.com/pet.getRandom?key=7df0fb48f5f60ad6bd360c74f25b0f17&location=94020&breed=pug&output=full&format=json';
+
     return $.getJSON('https://api.instagram.com/v1/users/self/media/recent/?access_token=4666482734.0fc13c6.3850da1a14074073bef374f9cbfcd3c7&callback=?')
       .then((data) => {
         this.setState({ puppers: data.data });
       });
-  }
-
-  getMatchingAdoptablePuppers() {
-    var url = 'http://api.petfinder.com/pet.getRandom?key=7df0fb48f5f60ad6bd360c74f25b0f17&location=94020&breed=pug&output=full&format=json';
-    $.ajax({
-        type : 'GET',
-        data : {},
-        url : url+'&callback=?' ,
-        dataType: 'json',
-        success : function(data) {
-            console.log(data.petfinder.pet.name);
-            console.log(data.petfinder.pet.media.photos.photo[0].$t);
-            console.log(data.petfinder.pet.contact.phone.$t);
-            console.log(data.petfinder.pet.description.$t);
-        },
-        error : function(request,error)
-        {
-            alert("Request: "+ JSON.stringify(request));
-        }
-    });
-  }
-
-  renderPuppers() {
-    console.log(this.state)
-    if(this.state.puppers) {
-      return (
-        this.state.puppers.map((puppy, index) => {
-          return (
-            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.love_score}/>
-          )
-        })
-      )
-    }
   }
 
   vz_b(input) {
@@ -105,8 +78,6 @@ class App extends Component {
     var screenshot = this.refs.webcam.getScreenshot();
     this.setState({screenshot: screenshot});
 
-    console.log("making API call now for image processing..")
-
     $.post('/process_image', {image: screenshot})
       .then((data) => {
         // PARSE THE data
@@ -127,30 +98,36 @@ class App extends Component {
         this.setState({surprise});
         this.setState({surprise_likelihood});
         const love_score = 2*this.vz_b(joy)+2*this.vz_b(surprise)-2*this.vz_b(anger)+1*this.vz_b(sorrow)+this.vz(joy_likelihood)-this.vz(anger_likelihood)+1.5*this.vz(surprise_likelihood)+0.5*this.vz(sorrow_likelihood);
-
-        console.log("Image processing done. Joy likelihood: " + joy_likelihood)
-
         this.setState({love_score});
       });
   }
 
-
   renderCamera() {
-    const { className, ...props } = this.props;
     return (
-      <div className={classnames('App', className)} {...props}>
-        <div className="Live-container">
-        </div>
+      <div className="Container">
+        <h1>LIVE</h1>
         <p className="App-intro">
           <Webcam className="webcam" ref='webcam' />
         </p>
         { this.state.screenshot && (
-          <p className="App-Screenshot">
+          <p className="App-screenshot">
             <img src={this.state.screenshot} role="presentation"/>
           </p>
         )}
       </div>
-    );
+    )
+  }
+
+  renderPuppers() {
+    if(this.state.puppers) {
+      return (
+        this.state.puppers.map((puppy, index) => {
+          return (
+            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.love_score}/>
+          )
+        })
+      )
+    }
   }
 
   render() {

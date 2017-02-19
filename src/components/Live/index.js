@@ -22,7 +22,6 @@ export default class Live extends Component {
 
     $.post('/process_image', {image: screenshot})
       .then((data) => {
-        console.log("POST Req success")
         console.log(data)
       });
   }
@@ -34,18 +33,16 @@ export default class Live extends Component {
   render() {
     const { className, ...props } = this.props;
 
-    console.log("This is the state below")
-    console.log(this.state)
-
     return (
-      <div className={classnames('App', className)} {...props}>
+      <div>
         <div className="Live-container">
+          <h1>LIVE</h1>
         </div>
-        <p className="App-intro">
+        <p className="Live-app-intro">
           <Webcam className="webcam" ref='webcam' />
         </p>
         { this.state.screenshot && (
-          <p className="App-Screenshot">
+          <p className="Live-app-screenshot">
             <img src={this.state.screenshot} role="presentation"/>
           </p>
         )}
