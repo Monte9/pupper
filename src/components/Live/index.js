@@ -28,7 +28,7 @@ export default class Live extends Component {
   }
 
   componentDidMount(){
-      setInterval(this.captureFrame.bind(this), 1000);
+      setInterval(this.captureFrame.bind(this), 3000);
   }
 
   render() {
