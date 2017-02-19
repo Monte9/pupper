@@ -6,7 +6,10 @@ import './pupper_card.css';
 export default class PupperCard extends Component {
   render() {
     const { className, ...props } = this.props;
-    const customStyle = ((this.props.love_score > 0) ? "visible" : "hidden");
+    const customStyle = ((this.props.visible > 0) ? "visible" : "hidden");
+
+    console.log("Love Score: " + this.props.visible)
+
     return (
       <div className="Pupper-card-wrapper">
         <div className="Pupper-card">

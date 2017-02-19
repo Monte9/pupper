@@ -33,8 +33,8 @@ class App extends Component {
   componentDidMount() {
     console.log("hi there");
     this.getPupperImages();
-    this.getMatchingAdoptablePuppers();
-    setInterval(this.captureFrame.bind(this), 3000);
+    //this.getMatchingAdoptablePuppers();
+    setInterval(this.captureFrame.bind(this), 500);
   }
 
   getPupperImages() {
@@ -105,6 +105,8 @@ class App extends Component {
     var screenshot = this.refs.webcam.getScreenshot();
     this.setState({screenshot: screenshot});
 
+    console.log("making API call now for image processing..")
+
     $.post('/process_image', {image: screenshot})
       .then((data) => {
         // PARSE THE data
@@ -125,7 +127,9 @@ class App extends Component {
         this.setState({surprise});
         this.setState({surprise_likelihood});
         const love_score = 2*this.vz_b(joy)+2*this.vz_b(surprise)-2*this.vz_b(anger)+1*this.vz_b(sorrow)+this.vz(joy_likelihood)-this.vz(anger_likelihood)+1.5*this.vz(surprise_likelihood)+0.5*this.vz(sorrow_likelihood);
-        console.log("Love Score: "+love_score);
+
+        console.log("Image processing done. Joy likelihood: " + joy_likelihood)
+
         this.setState({love_score});
       });
   }
