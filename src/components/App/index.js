@@ -51,9 +51,9 @@ class App extends Component {
   }
 
   getMatchingAdoptablePuppers() {
-    return $.getJSON('http://api.petfinder.com/pet.getRandom?key=7df0fb48f5f60ad6bd360c74f25b0f17&location=94020&breed=pug&output=full&format=json&callback=?')
+    return $.getJSON('http://api.petfinder.com/pet.find?key=7df0fb48f5f60ad6bd360c74f25b0f17&location=94020&breed=pug&output=full&format=json&callback=?')
       .then((data) => {
-        this.setState({ lucky_pet: data.petfinder.pet });
+        this.setState({ lucky_pets: data.petfinder.pets.pet });
       });
   }
 
@@ -130,7 +130,7 @@ class App extends Component {
       return (
         this.state.puppers.map((puppy, index) => {
           return (
-            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.love_score} lucky_pet={this.state.lucky_pet}/>
+            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.love_score} lucky_pet={this.state.lucky_pets[index]}/>
           )
         })
       )

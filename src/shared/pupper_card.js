@@ -6,10 +6,10 @@ import './pupper_card.css';
 export default class PupperCard extends Component {
   renderPetInfo() {
     if(this.props.lucky_pet) {
-      if(this.props.lucky_pet.contact.phone) {
+      if(this.props.lucky_pet.contact.phone.$t === undefined) {
         return `Find my buddy ${this.props.lucky_pet.name.$t} in Palo Alto`
       } else {
-        return `Call my friend ${this.props.lucky_pet.name.$t} at ${this.props.lucky_pet.contact.phone}`
+        return `Call my friend ${this.props.lucky_pet.name.$t} at ${this.props.lucky_pet.contact.phone.$t}`
       }
     }
   }
