@@ -43,7 +43,7 @@ app.post('/process_image', urlencodedParser, function (req, res) {
   // Performs face detection on the local file
   vision.detectFaces(fileName)
   .then((results) => {
-    res.send('RESULT: ' + results)
+    res.send(results)
 
     const faces = results[0];
 
