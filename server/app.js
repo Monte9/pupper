@@ -44,7 +44,7 @@ app.post('/process_image', urlencodedParser, function (req, res) {
   vision.detectFaces(fileName)
   .then((results) => {
     res.send('RESULT: ' + results)
-    
+
     const faces = results[0];
 
     console.log('Faces:');
