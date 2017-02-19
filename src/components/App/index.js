@@ -32,7 +32,9 @@ class App extends Component {
 
   componentDidMount() {
     this.getPupperImages();
-    //this.getMatchingAdoptablePuppers();
+
+    console.log("Calling pet API below")
+    this.getMatchingAdoptablePuppers();
 
     setTimeout(this.startCapturingImage.bind(this), 3000);
   }
@@ -42,11 +44,16 @@ class App extends Component {
   }
 
   getPupperImages() {
-    var url = 'http://api.petfinder.com/pet.getRandom?key=7df0fb48f5f60ad6bd360c74f25b0f17&location=94020&breed=pug&output=full&format=json';
-
     return $.getJSON('https://api.instagram.com/v1/users/self/media/recent/?access_token=4666482734.0fc13c6.3850da1a14074073bef374f9cbfcd3c7&callback=?')
       .then((data) => {
         this.setState({ puppers: data.data });
+      });
+  }
+
+  getMatchingAdoptablePuppers() {
+    return $.getJSON('http://api.petfinder.com/pet.getRandom?key=7df0fb48f5f60ad6bd360c74f25b0f17&location=94020&breed=pug&output=full&format=json&callback=?')
+      .then((data) => {
+        this.setState({ lucky_pet: data.petfinder.pet });
       });
   }
 
@@ -123,7 +130,7 @@ class App extends Component {
       return (
         this.state.puppers.map((puppy, index) => {
           return (
-            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.love_score}/>
+            <PupperCard key={puppy.id} source={puppy.images.standard_resolution.url} visible={this.state.love_score} lucky_pet={this.state.lucky_pet}/>
           )
         })
       )

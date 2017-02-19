@@ -4,11 +4,19 @@ import FontAwesome from 'react-fontawesome';
 import './pupper_card.css';
 
 export default class PupperCard extends Component {
+  renderPetInfo() {
+    if(this.props.lucky_pet) {
+      if(this.props.lucky_pet.contact.phone) {
+        return `Find my buddy ${this.props.lucky_pet.name.$t} in Palo Alto`
+      } else {
+        return `Call my friend ${this.props.lucky_pet.name.$t} at ${this.props.lucky_pet.contact.phone}`
+      }
+    }
+  }
+
   render() {
     const { className, ...props } = this.props;
     const customStyle = ((this.props.visible > 0) ? "visible" : "hidden");
-
-    console.log("Love Score: " + this.props.visible)
 
     return (
       <div className="Pupper-card-wrapper">
@@ -25,8 +33,8 @@ export default class PupperCard extends Component {
                size='5x'
                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', paddingTop: '10'}}
              /></p>
-            <p> Adopt one like me today!</p>
-            <a href="http://www.sanger.dk/" target="_blank">Search for <strong>breed</strong> near <strong>Location</strong> <FontAwesome
+            <p>Want to adopt a cutie like me?</p>
+            <a href="http://www.sanger.dk/" target="_blank">{this.renderPetInfo()}<FontAwesome
                name='arrow-circle-right'
                size='1x'
                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', paddingTop: '10'}}
