@@ -53,6 +53,9 @@ class App extends Component {
         dataType: 'json',
         success : function(data) {
             console.log(data.petfinder.pet.name);
+            console.log(data.petfinder.pet.media.photos.photo[0].$t);
+            console.log(data.petfinder.pet.contact.phone.$t);
+            console.log(data.petfinder.pet.description.$t);
         },
         error : function(request,error)
         {
