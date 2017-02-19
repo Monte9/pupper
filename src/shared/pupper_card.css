@@ -4,11 +4,11 @@
 
 .Pupper-card {
   margin: auto;
-  width: 45%;
+  width: 80vh;
   min-width: 400px;
   min-height: 400px;
   height: 0;
-  padding-bottom: 44.5%;
+  padding-bottom: 80vh;
   border: 3px solid #d3d3d3;
   border-radius: 2px;
   position: relative;
@@ -16,6 +16,7 @@
 
 .Pupper-card-image img{
     width: 100%;
+    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
@@ -28,20 +29,22 @@
     z-index: 100;
     position: absolute;
     color: white;
-    font-size: 2.4vw;
+    font-size: 3.2vh;
     width: 100%;
     height: 100%;
     display: inline-block;
 }
 
 .icon {
+    font-size: 300%;
     color: #F87878;
-    font-size: 200%;
-    opacity: 0.8;
+    -webkit-animation: fadeinout 2s linear infinite;
+    animation: fadeinout 2s linear infinite;
 }
 
 .Pupper-card-overlay-text {
     font-family: edmondsans-regular;
+    padding: 10%;
 }
 
 /* unvisited link */
@@ -64,7 +67,12 @@ a:active {
     color: #F87878;
 }
 
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
 
-.Pupper-card:hover .Pupper-card-overlay{
-    visibility: visible;
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
 }

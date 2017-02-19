@@ -17,7 +17,7 @@ export default class PupperCard extends Component {
   render() {
     const { className, ...props } = this.props;
     const customStyle = ((this.props.visible > 0) ? "visible" : "hidden");
-
+    console.log(this.props.visible);
     return (
       <div className="Pupper-card-wrapper">
         <div className="Pupper-card">
@@ -26,15 +26,13 @@ export default class PupperCard extends Component {
           </div>
           <div className="Pupper-card-overlay" style={{visibility: customStyle}}>
           <div className="Pupper-card-overlay-text">
-            <br/>
-            <br/>
             <p className="icon"><FontAwesome
                name='heart-o'
                size='5x'
                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', paddingTop: '10'}}
              /></p>
             <p>Want to adopt a cutie like me?</p>
-            <a href="http://www.sanger.dk/" target="_blank">{this.renderPetInfo()}<FontAwesome
+            <a href="http://www.sanger.dk/" target="_blank">{this.renderPetInfo()} <FontAwesome
                name='arrow-circle-right'
                size='1x'
                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', paddingTop: '10'}}
